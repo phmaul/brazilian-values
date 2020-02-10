@@ -23,8 +23,7 @@ const DATE_PATTERN = /^\d{2}\/\d{2}\/\d{4}$/;
  * ```
  * @param value - A date in DD/MM/YYYY.
  */
-const isDate = (
-  value: string,
-): boolean => DATE_PATTERN.test(value) && comparePiecesToDate(mapToPieces(value));
+const isDate = (value: string): boolean =>
+  DATE_PATTERN.test(value) && comparePiecesToDate(mapToPieces(value));
 
 export default isDate;

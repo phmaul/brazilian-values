@@ -9,10 +9,9 @@ import parsePiecesToDate from './parsePiecesToDate';
 const comparePiecesToDate = (
   pieces: DatePieces,
   instance: Date = parsePiecesToDate(pieces),
-): boolean => (
+): boolean =>
   instance.getDate() === pieces.date &&
   instance.getMonth() === pieces.month &&
-  instance.getFullYear() === pieces.year
-);
+  instance.getFullYear() === pieces.year;
 
 export default comparePiecesToDate;

@@ -13,14 +13,10 @@
  * //=> ['Fernanda', 'Luana', 'Ana Carolina']
  * @param value - A brazilian formatted list.
  */
-const parseToArray = (
-  value: string,
-): string[] => {
-  if (!value.trim())
-    return [];
+const parseToArray = (value: string): string[] => {
+  if (!value.trim()) return [];
   const items = value.split(' e ');
-  if (items.length === 1)
-    return items;
+  if (items.length === 1) return items;
   return items[0].split(', ').concat(items[1]);
 };
 

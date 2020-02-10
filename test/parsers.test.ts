@@ -5,7 +5,7 @@ import {
   parseToNumber,
 } from '../src/brazilian-values';
 
-test('parseToArray: Parses a brazilian formatted list to an Array', (context) => {
+test('parseToArray: Parses a brazilian formatted list to an Array', context => {
   const value1 = parseToArray('');
   const value2 = parseToArray('1');
   const value3 = parseToArray('1 e 2');
@@ -19,7 +19,7 @@ test('parseToArray: Parses a brazilian formatted list to an Array', (context) =>
   context.deepEqual(value5, ['Fernanda', 'Luana', 'Ana Carolina']);
 });
 
-test('parseToDate: Parses a brazilian formatted date to a Date instance', (context) => {
+test('parseToDate: Parses a brazilian formatted date to a Date instance', context => {
   const date = parseToDate('28/03/1996');
 
   context.is(date.getDate(), 28);
@@ -27,20 +27,20 @@ test('parseToDate: Parses a brazilian formatted date to a Date instance', (conte
   context.is(date.getFullYear(), 1996);
 });
 
-test('parseToDate: Throws errors on invalid pattern or date.', (context) => {
+test('parseToDate: Throws errors on invalid pattern or date.', context => {
   context.throws(
     () => parseToDate('01-01-2001'),
     { instanceOf: Error },
-    'Value "01-01-2001" does not match format.'
+    'Value "01-01-2001" does not match format.',
   );
   context.throws(
     () => parseToDate('31/02/2001'),
     { instanceOf: Error },
-    'Value "31/02/2001" is an invalid date.'
+    'Value "31/02/2001" is an invalid date.',
   );
 });
 
-test('parseToNumber: Parses a brazilian formatted number to number', (context) => {
+test('parseToNumber: Parses a brazilian formatted number to number', context => {
   context.is(parseToNumber('10'), 10);
   context.is(parseToNumber('-1.299'), -1299);
   context.is(parseToNumber('0,981'), 0.981);

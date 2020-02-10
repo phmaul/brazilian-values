@@ -1,4 +1,4 @@
-import addPeriods from "../helpers/addPeriods";
+import addPeriods from '../helpers/addPeriods';
 
 /**
  * Formats a number into money (BRL) format.
@@ -14,10 +14,10 @@ import addPeriods from "../helpers/addPeriods";
  * ```
  * @param value BRL value.
  */
-const formatToBRL = (
-  value: number | string,
-): string => {
-  const number = Number(value).toFixed(2).replace('.', ',');
+const formatToBRL = (value: number | string): string => {
+  const number = Number(value)
+    .toFixed(2)
+    .replace('.', ',');
   return 'R$ ' + addPeriods(number);
 };
 

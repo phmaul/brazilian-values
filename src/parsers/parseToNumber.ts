@@ -11,8 +11,7 @@
  * //=> 19898.1298
  * @param value - A brazilian formatted number.
  */
-const parseToNumber = (
-  value: string,
-): number => Number(value.replace(/\./g, '').replace(',', '.'));
+const parseToNumber = (value: string): number =>
+  Number(value.replace(/\./g, '').replace(',', '.'));
 
 export default parseToNumber;

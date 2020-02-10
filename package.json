@@ -31,8 +31,9 @@
   "jsdelivr": "dist/brazilian-values.umd.js",
   "umd:main": "dist/brazilian-values.umd.js",
   "scripts": {
-    "test": "yarn run test:types && yarn run test:unit",
+    "test": "yarn run test:code-style && yarn run test:types && yarn run test:unit",
     "test:unit": "ava",
+    "test:code-style": "prettier --check \"./{src,test}/**/*.ts\"",
     "test:types": "tsc --project ./tsconfig.build.json --noEmit",
     "build": "yarn run build:types && yarn run build:bundles",
     "build:bundles": "rollup --config rollup.config.js",
@@ -48,7 +49,8 @@
   },
   "homepage": "https://github.com/VitorLuizC/brazilian-values#readme",
   "devDependencies": {
-    "ava": "^3.1.0",
+    "ava": "^3.3.0",
+    "prettier": "^1.19.1",
     "rollup": "^1.31.0",
     "rollup-plugin-license": "^0.13.0",
     "rollup-plugin-terser": "^5.2.0",

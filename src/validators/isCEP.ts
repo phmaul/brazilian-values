@@ -23,8 +23,6 @@ const CEP_PATTERN = /^(\d{8}|\d{2}\.?\d{3}\-\d{3})$/;
  * ```
  * @param value - A text containing a CEP.
  */
-const isCEP = (
-  value: string,
-): boolean => CEP_PATTERN.test(value);
+const isCEP = (value: string): boolean => CEP_PATTERN.test(value);
 
 export default isCEP;

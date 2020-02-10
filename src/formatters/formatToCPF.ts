@@ -14,13 +14,10 @@ import mapToNumeric from '../helpers/mapToNumeric';
  * ```
  * @param value - A `string` value of a CPF.
  */
-const formatToCPF = (
-  value: string,
-): string => (
+const formatToCPF = (value: string): string =>
   mapToNumeric(value)
     .replace(/(\d{3})(\d)/, '$1.$2')
     .replace(/(\d{3})(\d)/, '$1.$2')
-    .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
-);
+    .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
 
 export default formatToCPF;

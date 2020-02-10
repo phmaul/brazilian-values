@@ -1,7 +1,7 @@
 /**
  * Numbers used to check a document or something containing numbers.
  */
-type CheckSums = [ number, number ];
+type CheckSums = [number, number];
 
 /**
  * Generate check sums. Multiply numbers to validators and sum them to generate
@@ -13,12 +13,16 @@ const generateCheckSums = (
   numbers: Array<number>,
   validators: Array<number>,
 ): CheckSums => {
-  const initialCheckSums: CheckSums = [ 0, 0 ];
+  const initialCheckSums: CheckSums = [0, 0];
 
-  return validators.reduce(([ checkerA, checkerB ], validator, index) => [
-    (index === 0) ? 0 : (checkerA + numbers[index - 1] * validator),
-    checkerB + numbers[index] * validator
-  ] as CheckSums, initialCheckSums);
+  return validators.reduce(
+    ([checkerA, checkerB], validator, index) =>
+      [
+        index === 0 ? 0 : checkerA + numbers[index - 1] * validator,
+        checkerB + numbers[index] * validator,
+      ] as CheckSums,
+    initialCheckSums,
+  );
 };
 
 export default generateCheckSums;

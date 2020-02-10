@@ -18,9 +18,7 @@ const DATE_PATTERN = /^\d{2}\/\d{2}\/\d{4}$/;
  * ```
  * @param value - A date in DD/MM/YYYY.
  */
-const parseToDate = (
-  value: string,
-): Date => {
+const parseToDate = (value: string): Date => {
   if (!DATE_PATTERN.test(value))
     throw new Error(`Value "${value}" does not match format.`);
   const pieces = mapToPieces(value);

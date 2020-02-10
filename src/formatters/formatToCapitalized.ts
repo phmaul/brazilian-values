@@ -12,13 +12,7 @@ type Options = {
 /**
  * A list of default words to keep upper case.
  */
-const DEFAULT_WORDS_TO_KEEP_UPPER_CASE = [
-  'cnpj',
-  'cpf',
-  'ltda',
-  'qp',
-  'tv',
-];
+const DEFAULT_WORDS_TO_KEEP_UPPER_CASE = ['cnpj', 'cpf', 'ltda', 'qp', 'tv'];
 
 /**
  * A list of default words to keep lower case.
@@ -52,12 +46,12 @@ const DEFAULT_WORDS_TO_KEEP_LOWER_CASE = [
  * @example ```js
  * formatToCapitalized('SERVIDOR PÚBLICO MUNICIPAL')
  * //=> 'Servidor Público Municipal'
- * 
+ *
  * formatToCapitalized('   os PrimEIROS  HOMens da tERra', {
  *   wordsToKeepLowerCase: ['os', 'da']
  * })
  * //=> 'Os Primeiros Homens da Terra'
- * 
+ *
  * formatToCapitalized('nova tv foi lançada', {
  *   wordsToKeepUpperCase: ['tv']
  * })
@@ -70,8 +64,8 @@ const formatToCapitalized = (
   {
     wordsToKeepLowerCase = DEFAULT_WORDS_TO_KEEP_LOWER_CASE,
     wordsToKeepUpperCase = DEFAULT_WORDS_TO_KEEP_UPPER_CASE,
-  }: Options = {}
-): string => (
+  }: Options = {},
+): string =>
   splitIntoWords(value)
     .map((word, index) => {
       const lowerCaseWord = word.toLocaleLowerCase();
@@ -81,7 +75,6 @@ const formatToCapitalized = (
         return word.toLocaleUpperCase();
       return capitalizeWord(word);
     })
-    .join(' ')
-);
+    .join(' ');
 
 export default formatToCapitalized;

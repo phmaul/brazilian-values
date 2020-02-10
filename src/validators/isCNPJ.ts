@@ -25,15 +25,11 @@ const CNPJ_PATTERN = /^(\d{14}|\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2})$/;
  * ```
  * @param value - A text containing a CNPJ.
  */
-const isCNPJ = (
-  value: string,
-): boolean => {
-  if (!CNPJ_PATTERN.test(value))
-    return false;
+const isCNPJ = (value: string): boolean => {
+  if (!CNPJ_PATTERN.test(value)) return false;
   const numbers = mapToNumbers(value);
-  if (isRepeatedArray(numbers))
-    return false;
-  const validators = [ 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 ];
+  if (isRepeatedArray(numbers)) return false;
+  const validators = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
   const checkers = generateCheckSums(numbers, validators);
   return (
     numbers[12] === getRemaining(checkers[0]) &&

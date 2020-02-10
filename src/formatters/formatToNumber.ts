@@ -13,12 +13,11 @@ import addPeriods from '../helpers/addPeriods';
  * //=> '19.898,1298'
  * @param value - Number value to be formatted.
  */
-const formatToNumber = (
-  value: number | string,
-): string => {
-  const [ number, trunc ] = Number(value).toString(10).split('.');
-  if (!trunc)
-    return addPeriods(number);
+const formatToNumber = (value: number | string): string => {
+  const [number, trunc] = Number(value)
+    .toString(10)
+    .split('.');
+  if (!trunc) return addPeriods(number);
   return addPeriods(number) + ',' + trunc;
 };
 

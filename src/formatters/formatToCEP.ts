@@ -11,11 +11,7 @@ import mapToNumeric from '../helpers/mapToNumeric';
  * ```
  * @param value A `string` with CEP numbers.
  */
-const formatToCEP = (
-  value: string,
-): string => (
-  mapToNumeric(value)
-    .replace(/(\d{5})(\d{1,3})/, '$1-$2')
-);
+const formatToCEP = (value: string): string =>
+  mapToNumeric(value).replace(/(\d{5})(\d{1,3})/, '$1-$2');
 
 export default formatToCEP;

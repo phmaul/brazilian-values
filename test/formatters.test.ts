@@ -13,77 +13,89 @@ import {
   formatToRG,
 } from '../src/brazilian-values';
 
-test('formatToBRL', (context) => {
+test('formatToBRL', context => {
   context.is(formatToBRL(1200.504), 'R$ 1.200,50');
   context.is(formatToBRL(0), 'R$ 0,00');
   context.is(formatToBRL('-74.89'), 'R$ -74,89');
 });
 
-test('formatToCapitalized', (context) => {
+test('formatToCapitalized', context => {
   context.is(formatToCapitalized('cnpj da empresa X'), 'CNPJ da Empresa X');
-  context.is(formatToCapitalized('JOAO ALVES DOS SANTOS FILHO'), 'Joao Alves dos Santos Filho');
-  context.is(formatToCapitalized('SERVIDOR PÚBLICO MUNICIPAL'), 'Servidor Público Municipal');
+  context.is(
+    formatToCapitalized('JOAO ALVES DOS SANTOS FILHO'),
+    'Joao Alves dos Santos Filho',
+  );
+  context.is(
+    formatToCapitalized('SERVIDOR PÚBLICO MUNICIPAL'),
+    'Servidor Público Municipal',
+  );
   context.is(
     formatToCapitalized('   os PrimEIROS  HOMens da tERra', {
-      wordsToKeepLowerCase: ['os', 'da']
-   }),
-   'Os Primeiros Homens da Terra'
+      wordsToKeepLowerCase: ['os', 'da'],
+    }),
+    'Os Primeiros Homens da Terra',
   );
   context.is(
     formatToCapitalized('nova tv foi lançada', {
-      wordsToKeepUpperCase: ['tv']
+      wordsToKeepUpperCase: ['tv'],
     }),
-    'Nova TV Foi Lançada'
+    'Nova TV Foi Lançada',
   );
 });
 
-test('formatToCEP', (context) => {
+test('formatToCEP', context => {
   context.is(formatToCEP('15998030'), '15998-030');
   context.is(formatToCEP('159980'), '15998-0');
 });
 
-test('formatToCNPJ', (context) => {
+test('formatToCNPJ', context => {
   context.is(formatToCNPJ('128781'), '12.878.1');
   context.is(formatToCNPJ('32284981000138'), '32.284.981/0001-38');
   context.is(formatToCNPJ('00.0.000.00.00--00-00'), '00.000.000/0000-00');
 });
 
-test('formatToCPF', (context) => {
+test('formatToCPF', context => {
   context.is(formatToCPF('00000000000'), '000.000.000-00');
   context.is(formatToCPF('00000000'), '000.000.00');
   context.is(formatToCPF('366.418.768-70'), '366.418.768-70');
 });
 
-test('formatToDate', (context) => {
+test('formatToDate', context => {
   context.is(formatToDate(new Date(2002, 7, 21)), '21/08/2002');
 });
 
-test('formatToDateTime', (context) => {
-  context.is(formatToDateTime(new Date(2002, 7, 21, 18, 30)), '21/08/2002 18:30');
+test('formatToDateTime', context => {
+  context.is(
+    formatToDateTime(new Date(2002, 7, 21, 18, 30)),
+    '21/08/2002 18:30',
+  );
 });
 
-test('formatToList', (context) => {
-  context.is(formatToList(['Vitor', 'William', 'Fernando']), 'Vitor, William e Fernando');
+test('formatToList', context => {
+  context.is(
+    formatToList(['Vitor', 'William', 'Fernando']),
+    'Vitor, William e Fernando',
+  );
   context.is(formatToList([]), '');
   context.is(formatToList(['1', '2']), '1 e 2');
   context.is(formatToList(['Direito Civil']), 'Direito Civil');
 });
 
-test('formatToNumber', (context) => {
+test('formatToNumber', context => {
   context.is(formatToNumber(0), '0');
   context.is(formatToNumber(-1299), '-1.299');
-  context.is(formatToNumber(.981), '0,981');
+  context.is(formatToNumber(0.981), '0,981');
   context.is(formatToNumber('19898.1298'), '19.898,1298');
 });
 
-test('formatToPhone', (context) => {
+test('formatToPhone', context => {
   context.is(formatToPhone('11'), '(11');
   context.is(formatToPhone('11971626'), '(11) 9716-26');
   context.is(formatToPhone('1197162679'), '(11) 9716-2679');
   context.is(formatToPhone('11971626799'), '(11) 9 7162-6799');
 });
 
-test('formatToRG', (context) => {
+test('formatToRG', context => {
   context.is(formatToRG('000000000', 'SP'), '00.000.000-0');
   context.is(formatToRG('00.00.0000-a', 'RJ'), '00.000.000-A');
   context.is(formatToRG('00.000.000-B', 'SP'), '00.000.000-B');

@@ -9,12 +9,11 @@ import fillWithZeros from '../helpers/fillWithZeros';
  * ```
  * @param value - A Date instance.
  */
-const formatToDateTime = (
-  value: Date,
-): string => (
-  formatToDate(value) + ' ' +
-  fillWithZeros(value.getHours(), 2) + ':' +
-  fillWithZeros(value.getMinutes(), 2)
-);
+const formatToDateTime = (value: Date): string =>
+  formatToDate(value) +
+  ' ' +
+  fillWithZeros(value.getHours(), 2) +
+  ':' +
+  fillWithZeros(value.getMinutes(), 2);
 
 export default formatToDateTime;
