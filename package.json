@@ -33,8 +33,10 @@
   "scripts": {
     "test": "yarn run test:types && yarn run test:unit",
     "test:unit": "ava",
-    "test:types": "tsc -p ./tsconfig.build.json --noEmit",
-    "build": "bili",
+    "test:types": "tsc --project ./tsconfig.build.json --noEmit",
+    "build": "yarn run build:types && yarn run build:bundles",
+    "build:bundles": "rollup --config rollup.config.js",
+    "build:types": "tsc --project ./tsconfig.build.json --emitDeclarationOnly",
     "prepublishOnly": "yarn run test && yarn run build"
   },
   "repository": {
@@ -47,9 +49,12 @@
   "homepage": "https://github.com/VitorLuizC/brazilian-values#readme",
   "devDependencies": {
     "ava": "^3.1.0",
-    "bili": "^4.8.1",
-    "rollup-plugin-typescript2": "^0.25.3",
+    "rollup": "^1.31.0",
+    "rollup-plugin-license": "^0.13.0",
+    "rollup-plugin-terser": "^5.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
     "ts-node": "^8.6.2",
+    "tslib": "^1.10.0",
     "typescript": "^3.7.5"
   }
 }
