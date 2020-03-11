@@ -2,6 +2,7 @@ import test from 'ava';
 import {
   formatToBRL,
   formatToCEP,
+  formatToCPFOrCNPJ,
   formatToCNPJ,
   formatToCapitalized,
   formatToCPF,
@@ -11,6 +12,7 @@ import {
   formatToNumber,
   formatToPhone,
   formatToRG,
+  formatToGenericPhone,
 } from '../src/brazilian-values';
 
 test('formatToBRL', context => {
@@ -60,6 +62,14 @@ test('formatToCPF', context => {
   context.is(formatToCPF('366.418.768-70'), '366.418.768-70');
 });
 
+test('formatToCPFOrCNPJ', context => {
+  context.is(formatToCPFOrCNPJ('00000000000'), '000.000.000-00');
+  context.is(formatToCPFOrCNPJ('00000000'), '000.000.00');
+  context.is(formatToCPFOrCNPJ('366.418.768-70'), '366.418.768-70');
+  context.is(formatToCPFOrCNPJ('32284981000138'), '32.284.981/0001-38');
+  context.is(formatToCPFOrCNPJ('00.0.000.00.00--00-00'), '00.000.000/0000-00');
+});
+
 test('formatToDate', context => {
   context.is(formatToDate(new Date(2002, 7, 21)), '21/08/2002');
 });
@@ -101,4 +111,12 @@ test('formatToRG', context => {
   context.is(formatToRG('00.000.000-B', 'SP'), '00.000.000-B');
   context.is(formatToRG('00000000x', 'RJ'), '00.000.000-X');
   context.is(formatToRG('MG-14.808.688', 'MG'), 'MG-14.808.688');
+});
+
+test('formatToGenericPhone', context => {
+  context.is(formatToGenericPhone('23456789'), '2345-6789');
+  context.is(formatToGenericPhone('923456789'), '92345-6789');
+  context.is(formatToGenericPhone('21923456789'), '(21) 92345-6789');
+  context.is(formatToGenericPhone('021923456789'), '021 92345-6789');
+  context.is(formatToGenericPhone('5521923456789'), '+55 21 92345-6789');
 });
