@@ -1,7 +1,7 @@
 import pkg from './package.json';
 import license from 'rollup-plugin-license';
 import { terser } from 'rollup-plugin-terser';
-import typescript from 'rollup-plugin-typescript';
+import typescript from '@rollup/plugin-typescript';
 
 /**
  * A `string` used as copyright notice that is injected in generated bundles. It
