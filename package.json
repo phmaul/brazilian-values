@@ -31,14 +31,14 @@
   "jsdelivr": "dist/brazilian-values.umd.js",
   "umd:main": "dist/brazilian-values.umd.js",
   "scripts": {
-    "test": "yarn run test:code-style && yarn run test:types && yarn run test:unit",
+    "test": "npm run test:code-style && npm run test:types && npm run test:unit",
     "test:unit": "ava",
     "test:code-style": "prettier --check \"./{src,test}/**/*.ts\"",
     "test:types": "tsc --project ./tsconfig.build.json --noEmit",
-    "build": "yarn run build:types && yarn run build:bundles",
+    "build": "npm run build:types && npm run build:bundles",
     "build:bundles": "rollup --config rollup.config.js",
     "build:types": "tsc --project ./tsconfig.build.json -d --declarationDir ./types --emitDeclarationOnly",
-    "prepublishOnly": "yarn run test && yarn run build"
+    "prepublishOnly": "npm run test && npm run build"
   },
   "repository": {
     "type": "git",
