@@ -15,7 +15,7 @@ Released under the MIT License.
 
 /**
  * An object with all configuration for `Rollup.js`.
- * @type {import('rollup').RollupOptions}
+ * @type {import('rollup').RollupFileOptions}
  */
 const options = {
   input: './src/brazilian-values.ts',
@@ -27,22 +27,25 @@ const options = {
       },
     }),
     typescript({
-      tsconfig: './tsconfig.build.json',
+      tsconfig: 'tsconfig.build.json',
     }),
   ],
   output: [
     {
       file: './dist/brazilian-values.esm.js',
       format: 'esm',
+      sourcemap: true,
     },
     {
-      file: 'dist/brazilian-values.js',
+      file: './dist/brazilian-values.js',
       format: 'commonjs',
+      sourcemap: true,
     },
     {
       file: './dist/brazilian-values.umd.js',
       name: 'BrazilianValues',
       format: 'umd',
+      sourcemap: true,
     },
     {
       file: './dist/brazilian-values.umd.min.js',

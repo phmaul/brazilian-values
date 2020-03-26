@@ -16,5 +16,6 @@
 
     // Type declaration configuration
     "types": []
-  }
+  },
+  "include": ["./src", "./test"]
 }

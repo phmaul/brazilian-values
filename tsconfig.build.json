@@ -1,14 +1,9 @@
 {
   "extends": "./tsconfig.json",
-  "files": [
-    "src/brazilian-values.ts"
-  ],
+  "include": ["./src"],
   "compilerOptions": {
     "target": "ES5",
     "lib": ["ES5"],
-
-    // Declaration configuration
-    "declaration": true,
-    "declarationDir": "types/",
+    "sourceMap": true
   }
 }
