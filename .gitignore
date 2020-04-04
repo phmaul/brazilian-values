@@ -17,3 +17,6 @@ types/
 # Transpiled modules and their source-maps.
 src/**/*.js
 src/**/*.js.map
+
+# Transpiled unit tests.
+test/**/*.js

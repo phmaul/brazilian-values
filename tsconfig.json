@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    // `tslib` settings
+    "importHelpers": true,
+
     // Module settings
     "moduleResolution": "node",
     "esModuleInterop": true,

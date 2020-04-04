@@ -1,8 +1,6 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "importHelpers": true,
-
     // Transpile output settings
     "target": "ES5",
     "module": "ES2015",
