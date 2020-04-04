@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    // Module configuration
+    // Module settings
     "moduleResolution": "node",
     "esModuleInterop": true,
 
-    // Type-check configuration
+    // Type-check settings
     "alwaysStrict": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
@@ -14,7 +14,7 @@
     "strictPropertyInitialization": true,
     "forceConsistentCasingInFileNames": true,
 
-    // Type declaration configuration
+    // Type declaration settings
     "types": []
   },
   "include": ["./src", "./test"]

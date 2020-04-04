@@ -35,9 +35,9 @@
     "test:unit": "ava",
     "test:code-style": "prettier --check \"./{src,test}/**/*.ts\"",
     "test:types": "tsc --project ./tsconfig.build.json --noEmit",
-    "build": "npm run build:types && npm run build:bundle",
+    "build": "npm run build:transpile && npm run build:bundle",
+    "build:transpile": "tsc --project ./tsconfig.build.json",
     "build:bundle": "rollup --config rollup.config.js",
-    "build:types": "tsc --project ./tsconfig.build.json -d --declarationDir ./types --emitDeclarationOnly",
     "prepublishOnly": "npm run test && npm run build"
   },
   "repository": {
@@ -49,7 +49,6 @@
   },
   "homepage": "https://github.com/VitorLuizC/brazilian-values#readme",
   "devDependencies": {
-    "@rollup/plugin-typescript": "^4.0.0",
     "ava": "^3.5.2",
     "prettier": "^2.0.2",
     "rollup": "^2.3.1",

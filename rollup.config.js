@@ -1,6 +1,5 @@
 import pkg from './package.json';
 import { terser } from 'rollup-plugin-terser';
-import typescript from '@rollup/plugin-typescript';
 
 /**
  * A `string` used as copyright notice that is injected in generated bundles. It
@@ -14,44 +13,42 @@ const banner = `/*!
 `;
 
 /**
+ * Creates an output options object.
+ * @param {import('rollup').OutputOptions} options
+ * @returns {import('rollup').OutputOptions}
+ */
+const Option = (options) => ({
+  banner,
+  sourcemap: true,
+  ...options,
+});
+
+/**
  * An object with all configuration for `Rollup.js`.
  * @type {import('rollup').RollupOptions}
  */
 const options = {
-  input: './src/brazilian-values.ts',
-  plugins: [
-    typescript({
-      tsconfig: 'tsconfig.build.json',
-    }),
-  ],
+  input: './src/brazilian-values.js',
   output: [
-    {
-      banner,
-      file: './dist/brazilian-values.esm.js',
-      format: 'esm',
-      sourcemap: true,
-    },
-    {
-      banner,
+    Option({
       file: './dist/brazilian-values.js',
       format: 'commonjs',
-      sourcemap: true,
-    },
-    {
-      banner,
+    }),
+    Option({
+      file: './dist/brazilian-values.esm.js',
+      format: 'esm',
+    }),
+    Option({
       file: './dist/brazilian-values.umd.js',
       name: 'BrazilianValues',
       format: 'umd',
-      sourcemap: true,
-    },
-    {
-      banner,
+    }),
+    Option({
       file: './dist/brazilian-values.umd.min.js',
       name: 'BrazilianValues',
       format: 'umd',
       plugins: [terser()],
-      sourcemap: true,
-    },
+    }),
   ],
 };
 

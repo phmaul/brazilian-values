@@ -1,9 +1,21 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["./src"],
   "compilerOptions": {
+    "importHelpers": true,
+
+    // Transpile output settings
     "target": "ES5",
-    "lib": ["ES5"],
-    "sourceMap": true
-  }
+    "module": "ES2015",
+    "charset": "utf-8",
+    "newLine": "lf",
+    "sourceMap": true,
+
+    // Type declaration settings
+    "declaration": true,
+    "declarationDir": "./types",
+
+    // ECMAScript version settings
+    "lib": ["ES5"]
+  },
+  "include": ["src/**/*.ts"]
 }
